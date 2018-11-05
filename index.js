@@ -1,19 +1,24 @@
 const Todo = require("./models/Todo");
+const User = require("./models/User");
 
-Todo.getAll().then(results => {
+User.getAll().then(results => {
   console.log(results);
-  console.log(`yesir those were the todos. neato.`);
+  console.log(`yesir those were the users. neato.`);
 });
 
 // db.any("select * from todos").then(results => {
 //   console.log(results);
 // });
 
-// Todo.getById(1).then(result => {
+User.getById(2).then(result => {
+  console.log(result);
+});
+
+// Todo.getById(200).then(result => {
 //   console.log(result);
 // });
 
-// Todo.getById(200).then(result => {
+// User.add("jeff").then(result => {
 //   console.log(result);
 // });
 
@@ -25,7 +30,7 @@ Todo.getAll().then(results => {
 //     console.log(result);
 //   });
 
-// Todo.updateName(2, "buy new video games").then(result => {
+// User.updateName(6, "Jeeves").then(result => {
 //   console.log(result);
 // });
 
@@ -35,6 +40,6 @@ Todo.getAll().then(results => {
 //   console.log(result);
 // });
 
-Todo.deleteById(1).then(result => {
-  console.log(result.rowCount);
-});
+// User.deleteById(6).then(result => {
+//   console.log(result.rowCount);
+// });
