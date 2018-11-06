@@ -17,6 +17,14 @@ function getAll() {
   return db.any("select * from todos");
 }
 
+function getTodosForUser(id) {
+  return db.any(
+    `select * from todos
+  where user_id = $1`,
+    [id]
+  );
+}
+
 function getById(id) {
   return db.one(`select * from todos where id = $1`, [id]).catch(err => {
     // no go
@@ -28,6 +36,15 @@ function getById(id) {
 }
 
 // UPDATE
+
+function assignToUser(todoId, userId) {
+  return db.results(
+    `update todos 
+	    set user_id = $2
+      where id = $1;`,
+    [todoId, userId]
+  );
+}
 
 function updateName(id, name) {
   return db.result(
@@ -50,7 +67,7 @@ function markCompleted(id) {
   //   return updateCompleted(id, true);
   return db.result(
     `update todos
-                            set completed=true
+                            set completed=$2
                         where id=$1`,
     [id, true]
   );
@@ -60,8 +77,8 @@ function markPending(id) {
   //   return updateCompleted(id, false);
   return db.result(
     `update todos
-                            set completed=true
-                        where id=$1`,
+      set completed=$2
+      where id=$1`,
     [id, false]
   );
 }
@@ -73,6 +90,7 @@ function deleteById(id) {
 
 module.exports = {
   add,
+  assignToUser,
   deleteById,
   getAll,
   getById,
