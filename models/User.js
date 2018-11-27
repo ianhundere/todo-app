@@ -1,5 +1,20 @@
 const db = require("./db");
 
+// declare a class named "User"
+class User {
+  // what properties should
+  // a user start off with?
+  // `constructor` is a mthod
+  // that is automatically
+  // called when you create a user
+  constructor(name) {
+    // define properties that
+    // are also the names
+    // of the database columns
+    this.name = name;
+  }
+}
+
 // CREATE
 function add(name) {
   return db.one(
@@ -16,14 +31,14 @@ function add(name) {
 function getAll() {
   return db.any(
     `select
-    users.id, 
-    users.name,
-    t.name as todo,
-    t.completed as completed
+        users.id, 
+        users.name,
+        t.name as todo,
+        t.completed as completed
     from 
-    users
-    left join todos t
-    on users.id = t.user_id`
+        users
+        left join todos t
+        on users.id = t.user_id`
   );
 }
 
@@ -66,11 +81,13 @@ function deleteById(id) {
 }
 
 // ========================================
-module.exports = {
-  add,
-  deleteById,
-  getAll,
-  getById,
-  getTodosForUser,
-  updateName
-};
+module.exports = User;
+// {
+//   add,
+//   deleteById,
+//   getAll,
+//   getById,
+//   getTodosForUser,
+//   updateName,
+//   User
+// };

@@ -10,8 +10,8 @@ values
 insert into users
     (name)
 values
-    ('aylin'),
-    ('beth'),
-    ('chris'),
-    ('bruce'),
-    ('alf');
+    ('atchoo the woo woo'),
+    ('sis the piss'),
+    ('feline the bovine'),
+    ('boo the shoe shoe'),
+    ('leonard the benard');

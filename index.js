@@ -3,6 +3,12 @@ require("dotenv").config();
 const Todo = require("./models/Todo");
 const User = require("./models/User");
 
+debugger;
+
+// let u = User.findById(1);
+// u.name = 'weehawlo';
+// u.save();
+
 // User.getTodosForUser(3).then(result => {
 //   console.log(result);
 // });
